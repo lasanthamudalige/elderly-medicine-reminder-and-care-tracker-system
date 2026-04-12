@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Login {
     String username = "admin";
     String password = "admin1234";
-
     public boolean authenticate() {
         Scanner input = new Scanner(System.in);
 

@@ -8,7 +8,6 @@ public class Reminder {
         this.reminderTime = reminderTime;
         this.note = note;
     }
-
     public void displayReminder() {
         System.out.println("Medicine Name: " + medicineName);
         System.out.println("Reminder Time: " + reminderTime);

@@ -8,7 +8,6 @@ public class Caretaker {
         this.phone = phone;
         this.patientName = patientName;
     }
-
     public void displayCaretaker() {
         System.out.println("Caretaker Name: " + name);
         System.out.println("Phone Number: " + phone);
