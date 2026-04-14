@@ -41,9 +41,9 @@ public class Main {
     }
 
     public static void mainMenu() {
-        int choice;
+        boolean run = true;
 
-        do {
+        while (run) {
             System.out.println("\n========== MAIN MENU ==========");
             System.out.println("1. Patient");
             System.out.println("2. Caretaker");
@@ -52,43 +52,88 @@ public class Main {
             System.out.println("5. Exit");
             System.out.print("Enter choice: ");
 
-            choice = input.nextInt();
-            input.nextLine();
+            // Get the user input as a string
+            String userInput = input.nextLine();
 
-            switch (choice) {
-                case 1: patientMenu(); break;
-                case 2: caretakerMenu(); break;
-                case 3: medicineMenu(); break;
-                case 4: reminderMenu(); break;
-                case 5: System.out.println("Exiting system..."); break;
-                default: System.out.println("Invalid choice.");
+            try {
+                if (userInput.trim().isEmpty()) {
+                    System.out.println("⚠️ Input cannot be empty!");
+                    continue;
+                }
+
+                // Convert the userInput String to an integer
+                int choice = Integer.parseInt(userInput);
+
+                switch (choice) {
+                    case 1:
+                        patientMenu();
+                        break;
+                    case 2:
+                        caretakerMenu();
+                        break;
+                    case 3:
+                        medicineMenu();
+                        break;
+                    case 4:
+                        reminderMenu();
+                        break;
+                    case 5:
+                        System.out.println("Exiting system...");
+                        run = false; // stop loop
+                        break;
+                    default:
+                        System.out.println("⚠️ Invalid choice.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("⚠️ Please enter a valid number!");
             }
-
-        } while (choice != 5);
+        }
     }
 
     // ---- PATIENT ----
     public static void patientMenu() {
-        int choice;
+        boolean run = true;
 
-        do {
+        while (run) {
             System.out.println("\n--- PATIENT MENU ---");
             System.out.println("1. Add Patient");
             System.out.println("2. View Patients");
             System.out.println("3. Back");
             System.out.print("Enter choice: ");
 
-            choice = input.nextInt();
-            input.nextLine();
 
-            switch (choice) {
-                case 1: addPatient(); break;
-                case 2: viewPatients(); break;
-                case 3: System.out.println("Back to Main Menu"); break;
-                default: System.out.println("Invalid choice.");
+            // Get the user input as a string
+            String userInput = input.nextLine();
+
+            try {
+                if (userInput.trim().isEmpty()) {
+                    System.out.println("⚠️ Input cannot be empty!");
+                    continue;
+                }
+
+                // Convert the userInput String to an integer
+                int choice = Integer.parseInt(userInput);
+
+                switch (choice) {
+                    case 1:
+                        addPatient();
+                        break;
+                    case 2:
+                        viewPatients();
+                        break;
+                    case 3:
+                        System.out.println("Going Back to Main Menu...");
+                        run = false; // stop loop
+                        break;
+                    default:
+                        System.out.println("⚠️ Invalid choice.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("⚠️ Please enter a valid number!");
             }
-
-        } while (choice != 3);
+        }
     }
 
     public static void addPatient() {
@@ -106,35 +151,58 @@ public class Main {
     public static void viewPatients() {
         System.out.println("\n--- PATIENT LIST ---");
         int count = 1;
-        for (Patient p : patients) {
+        for (Patient patient : patients) {
             System.out.println("Patient " + count++);
-            p.displayPatient();
+            patient.displayPatient();
             System.out.println();
         }
     }
 
     // ---- CARETAKER ----
     public static void caretakerMenu() {
-        int choice;
+        boolean run = true;
 
-        do {
+        while (run) {
+
             System.out.println("\n--- CARETAKER MENU ---");
             System.out.println("1. Add Caretaker");
             System.out.println("2. View Caretakers");
             System.out.println("3. Back");
             System.out.print("Enter choice: ");
 
-            choice = input.nextInt();
-            input.nextLine();
+            // Get the user input as a string
+            String userInput = input.nextLine();
 
-            switch (choice) {
-                case 1: addCaretaker(); break;
-                case 2: viewCaretakers(); break;
-                case 3: System.out.println("Back to Main Menu"); break;
-                default: System.out.println("Invalid choice.");
+            try {
+                if (userInput.trim().isEmpty()) {
+                    System.out.println("⚠️ Input cannot be empty!");
+                    continue;
+                }
+
+                // Convert the userInput String to an integer
+                int choice = Integer.parseInt(userInput);
+
+                switch (choice) {
+                    case 1:
+                        addCaretaker();
+                        break;
+                    case 2:
+                        viewCaretakers();
+                        break;
+                    case 3:
+                        System.out.println("Back to Main Menu");
+                        run = false; // stop loop
+                        break;
+                    default:
+                        System.out.println("⚠️ Invalid choice.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("⚠️ Please enter a valid number!");
             }
 
-        } while (choice != 3);
+        }
+
     }
 
     public static void addCaretaker() {
@@ -154,38 +222,58 @@ public class Main {
     public static void viewCaretakers() {
         System.out.println("\n--- CARETAKER LIST ---");
         int count = 1;
-        for (Caretaker c : caretakers) {
+        for (Caretaker caretaker : caretakers) {
             System.out.println("Caretaker " + count++);
-            c.displayCaretaker();
+            caretaker.displayCaretaker();
             System.out.println();
         }
     }
 
     // ---- MEDICINE ----
     public static void medicineMenu() {
-        int choice;
+        boolean run = true;
 
-        do {
+        while (run) {
+
             System.out.println("\n--- MEDICINE MENU ---");
             System.out.println("1. Add Medicine");
             System.out.println("2. View Medicines");
             System.out.println("3. Back");
             System.out.print("Enter choice: ");
 
-            choice = input.nextInt();
-            input.nextLine();
+            // Get the user input as a string
+            String userInput = input.nextLine();
 
-            switch (choice) {
-                case 1: addMedicine();
+            try {
+                if (userInput.trim().isEmpty()) {
+                    System.out.println("⚠️ Input cannot be empty!");
+                    continue;
+                }
+
+                // Convert the userInput String to an integer
+                int choice = Integer.parseInt(userInput);
+
+                switch (choice) {
+                    case 1:
+                        addMedicine();
                         break;
-                case 2: viewMedicines();
+                    case 2:
+                        viewMedicines();
                         break;
-                case 3: System.out.println("Back to Main Menu");
+                    case 3:
+                        System.out.println("Back to Main Menu");
+                        run = false; // stop loop
                         break;
-                default: System.out.println("Invalid choice.");
+                    default:
+                        System.out.println("⚠️ Invalid choice.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("⚠️ Please enter a valid number!");
             }
 
-        } while (choice != 3);
+        }
+
     }
 
     public static void addMedicine() {
@@ -206,36 +294,57 @@ public class Main {
     public static void viewMedicines() {
         System.out.println("\n--- MEDICINE LIST ---");
         int count = 1;
-        for (Medicine m : medicines) {
+        for (Medicine medicine : medicines) {
             System.out.println("Medicine " + count++);
-            m.displayMedicine();
+            medicine.displayMedicine();
             System.out.println();
         }
     }
 
     // ---- REMINDER ----
-
     public static void reminderMenu() {
-        int choice;
+        boolean run = true;
 
-        do {
+        while (run) {
+
             System.out.println("\n--- REMINDER MENU ---");
             System.out.println("1. Add Reminder");
             System.out.println("2. View Reminders");
             System.out.println("3. Back");
             System.out.print("Enter choice: ");
 
-            choice = input.nextInt();
-            input.nextLine();
+            // Get the user input as a string
+            String userInput = input.nextLine();
 
-            switch (choice) {
-                case 1: addReminder(); break;
-                case 2: viewReminders(); break;
-                case 3: System.out.println("Back to Main Menu"); break;
-                default: System.out.println("Invalid choice.");
+            try {
+                if (userInput.trim().isEmpty()) {
+                    System.out.println("⚠️ Input cannot be empty!");
+                    continue;
+                }
+
+                // Convert the userInput String to an integer
+                int choice = Integer.parseInt(userInput);
+
+                switch (choice) {
+                    case 1:
+                        addReminder();
+                        break;
+                    case 2:
+                        viewReminders();
+                        break;
+                    case 3:
+                        System.out.println("Back to Main Menu");
+                        run = false; // stop loop
+                        break;
+                    default:
+                        System.out.println("⚠️ Invalid choice.");
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("⚠️ Please enter a valid number!");
             }
 
-        } while (choice != 3);
+        }
     }
 
     public static void addReminder() {
@@ -255,9 +364,9 @@ public class Main {
     public static void viewReminders() {
         System.out.println("\n--- REMINDER LIST ---");
         int count = 1;
-        for (Reminder r : reminders) {
+        for (Reminder reminder : reminders) {
             System.out.println("Reminder " + count++);
-            r.displayReminder();
+            reminder.displayReminder();
             System.out.println();
         }
     }
