@@ -42,6 +42,7 @@ public class Main {
 
     public static void mainMenu() {
         int choice;
+
         do {
             System.out.println("\n========== MAIN MENU ==========");
             System.out.println("1. Patient");
