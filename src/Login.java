@@ -6,6 +6,7 @@ public class Login {
     public boolean authenticate() {
         Scanner input = new Scanner(System.in);
 
+
         System.out.print("Enter username: ");
         String user = input.nextLine();
 

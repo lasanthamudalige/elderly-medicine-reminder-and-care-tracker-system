@@ -8,6 +8,7 @@ public class Medicine {
         this.dosage = dosage;
         this.time = time;
     }
+
     public void displayMedicine() {
         System.out.println("Medicine Name: "+ medicineName);
         System.out.println("Dosage: " + dosage + " mg");
