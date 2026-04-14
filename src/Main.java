@@ -67,6 +67,7 @@ public class Main {
         } while (choice != 5);
     }
 
+    // ---- PATIENT ----
     public static void patientMenu() {
         int choice;
 
@@ -112,6 +113,7 @@ public class Main {
         }
     }
 
+    // ---- CARETAKER ----
     public static void caretakerMenu() {
         int choice;
 
@@ -159,6 +161,7 @@ public class Main {
         }
     }
 
+    // ---- MEDICINE ----
     public static void medicineMenu() {
         int choice;
 
