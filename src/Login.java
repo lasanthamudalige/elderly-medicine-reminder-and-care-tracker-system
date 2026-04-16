@@ -14,13 +14,12 @@ public class Login {
         System.out.print("Enter password: ");
         String pass = input.nextLine();
 
-        // if (user.equals(username) && pass.equals(password)) {
-        //     System.out.println("Login Successful");
-        //     return true;
-        // } else {
-        //     System.out.println("Invalid Login");
-        //     return false;
-        // }
-        return true;
+        if (user.equals(username) && pass.equals(password)) {
+            System.out.println("Login Successful");
+            return true;
+        } else {
+            System.out.println("Invalid Login");
+            return false;
+        }
     }
 }
