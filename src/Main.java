@@ -1,6 +1,6 @@
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Main {
 
     static Scanner input = new Scanner(System.in);
@@ -35,9 +35,9 @@ public class Main {
         medicines.add(new Medicine("Vitamin C", 250, "Night"));
         medicines.add(new Medicine("Aspirin", 100, "After Breakfast"));
 
-        reminders.add(new Reminder("Panadol", "8.00 AM", "Take after breakfast"));
-        reminders.add(new Reminder("Vitamin C", "8.00 PM", "Take after dinner"));
-        reminders.add(new Reminder("Aspirin", "9.00 AM", "Drink water with medicine"));
+        reminders.add(new Reminder("Nimal Perera", "Panadol", "08:00", "Note"));
+        reminders.add(new Reminder("Kamal Silve", "Vitamin C", "08:00"));
+        reminders.add(new Reminder("Sunil Fernando", "Aspirin", "09:00"));
     }
 
     public static void mainMenu() {
@@ -310,9 +310,9 @@ public class Main {
             System.out.println("\n--- REMINDER MENU ---");
             System.out.println("1. Add Reminder");
             System.out.println("2. View Reminders");
-            System.out.println("3. Back");
-            System.out.print("Enter choice: ");
-
+            System.out.println("3. Mark as Taken");
+            System.out.println("4. Back");
+            
             // Get the user input as a string
             String userInput = input.nextLine();
 
@@ -333,7 +333,8 @@ public class Main {
                         viewReminders();
                         break;
                     case 3:
-                        System.out.println("Back to Main Menu");
+                        markReminderTaken();
+                    case 4:
                         run = false; // stop loop
                         break;
                     default:
@@ -348,17 +349,27 @@ public class Main {
     }
 
     public static void addReminder() {
+        System.out.print("Enter Patient Name: ");
+        String patientName = input.nextLine();
+
         System.out.print("Enter Medicine Name: ");
         String medicineName = input.nextLine();
 
-        System.out.print("Enter Reminder Time: ");
-        String reminderTime = input.nextLine();
+        System.out.print("Enter Time (HH:mm): ");
+        String timeInput = input.nextLine();
 
-        System.out.print("Enter Note: ");
-        String note = input.nextLine();
+        try {
+            LocalTime time = LocalTime.parse(timeInput); // e.g. 08:00
 
-        reminders.add(new Reminder(medicineName, reminderTime, note));
-        System.out.println("Reminder added successfully.");
+            System.out.print("Enter Note: ");
+            String note = input.nextLine();
+
+            reminders.add(new Reminder(patientName, medicineName, time, note));
+            System.out.println("Reminder added successfully.");
+
+        } catch (Exception e) {
+            System.out.println("⚠️ Invalid time format! Use HH:mm (e.g. 08:00)");
+        }
     }
 
     public static void viewReminders() {
@@ -368,6 +379,27 @@ public class Main {
             System.out.println("Reminder " + count++);
             reminder.displayReminder();
             System.out.println();
+        }
+    }
+
+    public static void markReminderTaken() {
+        viewReminders();
+
+        System.out.print("Enter reminder number: ");
+        String inputValue = input.nextLine();
+
+        try {
+            int index = Integer.parseInt(inputValue) - 1;
+
+            if (index >= 0 && index < reminders.size()) {
+                reminders.get(index).markAsTaken();
+                System.out.println("✅ Marked as taken.");
+            } else {
+                System.out.println("⚠️ Invalid number.");
+            }
+
+        } catch (NumberFormatException e) {
+            System.out.println("⚠️ Enter a valid number!");
         }
     }
 }
