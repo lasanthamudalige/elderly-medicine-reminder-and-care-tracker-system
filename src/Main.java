@@ -16,6 +16,7 @@ public class Main {
         if (login.authenticate()) {
             System.out.println("Welcome to System!");
             loadDefaultData();
+            startReminderChecker(); //  START BACKGROUND SYSTEM
             mainMenu();
         } else {
             System.out.println("Login Failed. Exiting...");
@@ -35,9 +36,9 @@ public class Main {
         medicines.add(new Medicine("Vitamin C", 250, "Night"));
         medicines.add(new Medicine("Aspirin", 100, "After Breakfast"));
 
-        reminders.add(new Reminder("Nimal Perera", "Panadol", "08:00", "Note"));
-        reminders.add(new Reminder("Kamal Silve", "Vitamin C", "08:00"));
-        reminders.add(new Reminder("Sunil Fernando", "Aspirin", "09:00"));
+        reminders.add(new Reminder("Nimal Perera", "Panadol", LocalTime.parse("16:40"), "Take medicine before breakfast"));
+        reminders.add(new Reminder("Kamal Silva", "Vitamin C", LocalTime.parse("13:00"), "Take medicine after lunch"));
+        reminders.add(new Reminder("Sunil Fernando", "Aspirin", LocalTime.parse("19:00"), "Take medicine after dinner"));
     }
 
     public static void mainMenu() {
@@ -335,7 +336,7 @@ public class Main {
                     case 3:
                         markReminderTaken();
                     case 4:
-                        run = false; // stop loop
+                        run = false; // Stop loop
                         break;
                     default:
                         System.out.println("⚠️ Invalid choice.");
@@ -400,6 +401,44 @@ public class Main {
 
         } catch (NumberFormatException e) {
             System.out.println("⚠️ Enter a valid number!");
+        }
+    }
+
+    public static void startReminderChecker() {
+        new Thread(() -> {
+            while (true) {
+                try {
+                    LocalTime now = LocalTime.now();
+
+                    for (Reminder reminder : reminders) {
+
+                        // If time passed and not taken flag as a missed dose
+                        if (!reminder.taken && now.isAfter(reminder.time)) {
+                            notifyCaretaker(reminder);
+                            reminder.taken = true; // prevent repeat alerts by updateing the take status to take after sending the notification
+                        }
+                    }
+
+                    Thread.sleep(60000); // check every 1 minute
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public static void notifyCaretaker(Reminder reminder) {
+        for (Caretaker caretaker : caretakers) {
+
+            if (caretaker.patientName.equalsIgnoreCase(reminder.patientName)) {
+
+                System.out.println("\n🚨 ALERT: MISSED MEDICINE!");
+                System.out.println("Patient: " + reminder.patientName);
+                System.out.println("Medicine: " + reminder.medicineName);
+                System.out.println("Notify Caretaker: " + caretaker.name);
+                System.out.println("Phone: " + caretaker.phone);
+            }
         }
     }
 }
