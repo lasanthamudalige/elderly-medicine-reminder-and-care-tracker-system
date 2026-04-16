@@ -125,7 +125,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Going Back to Main Menu...");
-                        run = false; // stop loop
+                        run = false; // Stop loop
                         break;
                     default:
                         System.out.println("⚠️ Invalid choice.");
@@ -192,7 +192,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Back to Main Menu");
-                        run = false; // stop loop
+                        run = false; // Stop loop
                         break;
                     default:
                         System.out.println("⚠️ Invalid choice.");
@@ -263,7 +263,7 @@ public class Main {
                         break;
                     case 3:
                         System.out.println("Back to Main Menu");
-                        run = false; // stop loop
+                        run = false; // Stop loop
                         break;
                     default:
                         System.out.println("⚠️ Invalid choice.");
@@ -415,11 +415,11 @@ public class Main {
                         // If time passed and not taken flag as a missed dose
                         if (!reminder.taken && now.isAfter(reminder.time)) {
                             notifyCaretaker(reminder);
-                            reminder.taken = true; // prevent repeat alerts by updateing the take status to take after sending the notification
+                            reminder.taken = true; // Prevent repeat alerts by updateing the take status to take after sending the notification
                         }
                     }
 
-                    Thread.sleep(60000); // check every 1 minute
+                    Thread.sleep(60000); // Check every 1 minute
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
