@@ -10,6 +10,8 @@ public class Main {
     static ArrayList<Medicine> medicines = new ArrayList<>();
     static ArrayList<Reminder> reminders = new ArrayList<>();
 
+    static boolean running = true;
+
     public static void main(String[] args) {
         Login login = new Login();
 
@@ -114,6 +116,8 @@ public class Main {
                     case 5:
                         System.out.println("Exiting system...");
                         run = false; // stop loop
+                        running = false; // Stop the 
+                        System.exit(0);
                         break;
                     default:
                         System.out.println("⚠️ Invalid choice.");
@@ -438,8 +442,8 @@ public class Main {
     }
 
     public static void startReminderChecker() {
-        new Thread(() -> {
-            while (true) {
+        new Thread(() -> { // Seperate thread to monitor reminders of the patients
+            while (running) {
                 try {
                     LocalTime now = LocalTime.now();
 
