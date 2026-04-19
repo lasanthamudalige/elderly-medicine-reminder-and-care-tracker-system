@@ -30,50 +30,21 @@ public class Main {
         patients.add(new Patient("Nilan Perera", 70));
         patients.add(new Patient("Kasun Silva", 68));
         patients.add(new Patient("Ravindu Fernando", 75));
-        patients.add(new Patient("Thilak Jayawardena", 72));
-        patients.add(new Patient("Suresh Kumara", 66));
-        patients.add(new Patient("Ranjith Wijesinghe", 80));
-        patients.add(new Patient("Anoma Perera", 65));
-        patients.add(new Patient("Piyumi Silva", 74));
-        patients.add(new Patient("Dinesh Bandara", 69));
-        patients.add(new Patient("Sachini Fernando", 67));
 
         // ---- CARETAKERS ----
         caretakers.add(new Caretaker("Nadeera", "0771234567", "Nilan Perera"));
         caretakers.add(new Caretaker("Chathura", "0779876543", "Kasun Silva"));
         caretakers.add(new Caretaker("Ishara", "0714567890", "Ravindu Fernando"));
-        caretakers.add(new Caretaker("Pasindu", "0751122334", "Thilak Jayawardena"));
-        caretakers.add(new Caretaker("Tharindu", "0769988776", "Suresh Kumara"));
-        caretakers.add(new Caretaker("Kavindi", "0774455667", "Ranjith Wijesinghe"));
-        caretakers.add(new Caretaker("Sanduni", "0712233445", "Anoma Perera"));
-        caretakers.add(new Caretaker("Ramesh", "0756677889", "Piyumi Silva"));
-        caretakers.add(new Caretaker("Udesh", "0763344556", "Dinesh Bandara"));
-        caretakers.add(new Caretaker("Nimashi", "0778899001", "Sachini Fernando"));
 
         // ---- MEDICINES ----
         medicines.add(new Medicine("Panadol", 500, "Morning"));
         medicines.add(new Medicine("Vitamin C", 250, "Night"));
         medicines.add(new Medicine("Aspirin", 100, "After Breakfast"));
-        medicines.add(new Medicine("Metformin", 500, "After Meal"));
-        medicines.add(new Medicine("Atorvastatin", 20, "Night"));
-        medicines.add(new Medicine("Losartan", 50, "Morning"));
-        medicines.add(new Medicine("Omeprazole", 20, "Before Breakfast"));
-        medicines.add(new Medicine("Amoxicillin", 500, "Every 8 hours"));
-        medicines.add(new Medicine("Calcium", 600, "After Lunch"));
-        medicines.add(new Medicine("Ibuprofen", 200, "When Needed"));
 
         // ---- REMINDERS ----
         reminders.add(new Reminder("Nilan Perera", "Panadol", LocalTime.parse("08:00"), "Before breakfast"));
         reminders.add(new Reminder("Kasun Silva", "Vitamin C", LocalTime.parse("13:00"), "After lunch"));
         reminders.add(new Reminder("Ravindu Fernando", "Aspirin", LocalTime.parse("19:00"), "After dinner"));
-
-        reminders.add(new Reminder("Thilak Jayawardena", "Metformin", LocalTime.parse("07:30"), "Before breakfast"));
-        reminders.add(new Reminder("Suresh Kumara", "Losartan", LocalTime.parse("08:30"), "Morning dose"));
-        reminders.add(new Reminder("Ranjith Wijesinghe", "Atorvastatin", LocalTime.parse("21:00"), "Before sleep"));
-        reminders.add(new Reminder("Anoma Perera", "Calcium", LocalTime.parse("12:30"), "After lunch"));
-        reminders.add(new Reminder("Piyumi Silva", "Omeprazole", LocalTime.parse("06:30"), "Empty stomach"));
-        reminders.add(new Reminder("Dinesh Bandara", "Ibuprofen", LocalTime.parse("15:00"), "If needed"));
-        reminders.add(new Reminder("Sachini Fernando", "Amoxicillin", LocalTime.parse("10:00"), "After meal"));
     }
 
     public static void mainMenu() {
