@@ -63,7 +63,7 @@ public class Main {
             String userInput = input.nextLine();
 
             try {
-                if (userInput.trim().isEmpty()) { // Exeption handling to detect empty inputs
+                if (userInput.trim().isEmpty()) { // Exception handling to detect empty inputs
                     System.out.println("⚠️ Input cannot be empty!");
                     continue;
                 }
@@ -94,7 +94,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exeption handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
         }
@@ -116,7 +116,7 @@ public class Main {
             String userInput = input.nextLine();
 
             try {
-                if (userInput.trim().isEmpty()) { // Exeption handling to detect empty inputs
+                if (userInput.trim().isEmpty()) { // Exception handling to detect empty inputs
                     System.out.println("⚠️ Input cannot be empty!");
                     continue;
                 }
@@ -139,7 +139,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exeption handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
         }
@@ -183,7 +183,7 @@ public class Main {
             String userInput = input.nextLine();
 
             try {
-                if (userInput.trim().isEmpty()) { // Exeption handling to detect empty inputs
+                if (userInput.trim().isEmpty()) { // Exception handling to detect empty inputs
                     System.out.println("⚠️ Input cannot be empty!");
                     continue;
                 }
@@ -206,7 +206,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exeption handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
 
@@ -254,7 +254,7 @@ public class Main {
             String userInput = input.nextLine();
 
             try {
-                if (userInput.trim().isEmpty()) { // Exeption handling to detect empty inputs
+                if (userInput.trim().isEmpty()) { // Exception handling to detect empty inputs
                     System.out.println("⚠️ Input cannot be empty!");
                     continue;
                 }
@@ -277,7 +277,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exeption handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
 
@@ -326,7 +326,7 @@ public class Main {
             String userInput = input.nextLine();
 
             try {
-                if (userInput.trim().isEmpty()) { // Exeption handling to detect empty inputs
+                if (userInput.trim().isEmpty()) { // Exception handling to detect empty inputs
                     System.out.println("⚠️ Input cannot be empty!");
                     continue;
                 }
@@ -350,7 +350,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exeption handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
 
@@ -413,7 +413,7 @@ public class Main {
     }
 
     public static void startReminderChecker() {
-        new Thread(() -> { // Seperate thread to monitor reminders of the patients
+        new Thread(() -> { // Separate thread to monitor reminders of the patients
             while (running) {
                 try {
                     LocalTime now = LocalTime.now();
@@ -423,7 +423,7 @@ public class Main {
                         // If time passed and not taken flag as a missed dose
                         if (!reminder.taken && now.isAfter(reminder.time)) {
                             notifyCaretaker(reminder);
-                            reminder.taken = true; // Prevent repeat alerts by updateing the take status to take after sending the notification
+                            reminder.taken = true; // Prevent repeat alerts by updating the take status to take after sending the notification
                         }
                     }
 
