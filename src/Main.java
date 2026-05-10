@@ -139,7 +139,7 @@ public class Main {
                         System.out.println("⚠️ Invalid choice.");
                 }
 
-            } catch (NumberFormatException e) { // Exception handling to detect if the user entered anything other than a number
+            } catch (NumberFormatException e) { // .Exception handling to detect if the user entered anything other than a number
                 System.out.println("⚠️ Please enter a valid number!");
             }
         }
